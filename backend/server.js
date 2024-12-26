@@ -2,7 +2,8 @@ import express from "express";
 import env from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import authRoutes from "./routes/auth.routes.js"
+import authRoutes from "./routes/auth.routes.js";
+import projectPostroute from "./routes/projectPostroute.js";
 
 env.config();
 
@@ -21,5 +22,6 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use('/api/auth', authRoutes);
+app.use('/api/post',projectPostroute);
 
 app.listen(port,()=> console.log(`Server is running on ${port}`));

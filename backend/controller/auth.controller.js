@@ -7,16 +7,16 @@ import User from '../models/user.js';
 env.config();
 
 export const registerUser = async(req,res)=>{
-try {
+    try {
   const {firstname,lastname,email,password,phone,location,projects,shortlistedProviders} = req.body
 
   //to check existing user
   const existingUser = await User.findOne({email});
   if(existingUser){
     return res.status(400).json({message:"User Already exists"});
-  }
+        }
 
-  //hasing
+//hasing
   const saltRounds = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password,saltRounds);
 
@@ -55,7 +55,7 @@ try {
 
 } catch (error) {
   console.log("Error Found in registerUser",error.message);
-  return res.status(500).json({error:"Internal Server Error"});
+return res.status(500).json({error:"Internal Server Error"});
 }
 }
 
@@ -103,6 +103,6 @@ export const getUserProfile = async (req,res) => {
     res.status(200).json(user);
   } catch (error) {
     console.log("Error Found in getUserProfile",error.message);
-    return res.status(500).json({error:"Internal Server Error"});
-  }
+  return res.status(500).json({error:"Internal Server Error"});
+}
 }

@@ -2,6 +2,7 @@ import express from "express";
 import env from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js"
 
 env.config();
@@ -19,6 +20,7 @@ mongoose.connect(process.env.DB_CONNECT)
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
 

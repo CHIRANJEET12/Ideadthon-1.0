@@ -8,7 +8,7 @@ env.config();
 
 export const registerUser = async(req,res)=>{
 try {
-  const {fullname,email,password,phone,location,projects,shortlistedProviders} = req.body
+  const {firstname,lastname,email,password,phone,location,projects,shortlistedProviders} = req.body
 
   //to check existing user
   const existingUser = await User.findOne({email});

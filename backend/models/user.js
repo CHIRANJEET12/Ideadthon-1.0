@@ -10,7 +10,8 @@ const projectSchema = new mongoose.Schema({
     max: { type: Number, required: true }
   },
   location: {
-   type: String
+    city: { type: String, required: true },
+    state: { type: String, required: true }
   },
   status: {
     type: String,
@@ -19,6 +20,7 @@ const projectSchema = new mongoose.Schema({
   },
   createdAt: { type: Date, default: Date.now }
 });
+
 
 const userSchema = new mongoose.Schema({
   fullname: {
@@ -29,7 +31,8 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   phone: { type: String },
   location: {
-    type: String
+    city: String,
+    state: String
   },
   projects: [projectSchema],
   shortlistedProviders: [{

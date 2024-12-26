@@ -2,7 +2,6 @@ import express from "express";
 import env from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.routes.js"
 
 env.config();
@@ -23,5 +22,6 @@ app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/post',projectPostroute);
 
 app.listen(port,()=> console.log(`Server is running on ${port}`));

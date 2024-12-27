@@ -38,17 +38,17 @@ const contractorSchema = new mongoose.Schema({
   }]
 });
 
-contractorSchema.methods.generateAuthToken = function() {
-  return jwt.sign({_id: this._id}, process.env.JWT_SECRET, {expiresIn: '24h'});
-};
+// contractorSchema.methods.generateAuthToken = function() {
+//   return jwt.sign({_id: this._id}, process.env.JWT_SECRET, {expiresIn: '24h'});
+// };
 
-contractorSchema.methods.comparePassword = async function(password) {
-  return await bcrypt.compare(password, this.password);
-};
+// contractorSchema.methods.comparePassword = async function(password) {
+//   return await bcrypt.compare(password, this.password);
+// };
 
-contractorSchema.statics.hashPassword = async function(password) {
-  return await bcrypt.hash(password, 10);
-};
+// contractorSchema.statics.hashPassword = async function(password) {
+//   return await bcrypt.hash(password, 10);
+// };
 
 const Contractor = mongoose.model('contractor', contractorSchema);
 export default Contractor;

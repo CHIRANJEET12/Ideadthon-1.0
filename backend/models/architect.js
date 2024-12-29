@@ -33,17 +33,17 @@ const architectSchema = new mongoose.Schema({
   }]
 });
 
-architectSchema.methods.generateAuthToken = function() {
-  return jwt.sign({_id: this._id}, process.env.JWT_SECRET, {expiresIn: '24h'});
-};
+// architectSchema.methods.generateAuthToken = function() {
+//   return jwt.sign({_id: this._id}, process.env.JWT_SECRET, {expiresIn: '24h'});
+// };
 
-architectSchema.methods.comparePassword = async function(password) {
-  return await bcrypt.compare(password, this.password);
-};
+// architectSchema.methods.comparePassword = async function(password) {
+//   return await bcrypt.compare(password, this.password);
+// };
 
-architectSchema.statics.hashPassword = async function(password) {
-  return await bcrypt.hash(password, 10);
-};
+// architectSchema.statics.hashPassword = async function(password) {
+//   return await bcrypt.hash(password, 10);
+// };
 
 const Architect = mongoose.model('architect', architectSchema);
 export default Architect;
